@@ -47,22 +47,24 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ),
 
-                  Expanded(
-                    child: ListView(
-                      children: [
-                        TaskCardWidget(
-                            title: 'Sample Task',
-                            desc: 'Milks, Eggs, Juice'
-                        ),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                      ],
-                    )
-                  )
+
+
+                  // Expanded(
+                  //   child: ListView(
+                  //     children: [
+                  //       TaskCardWidget(
+                  //           title: 'Sample Task',
+                  //           desc: 'Milks, Eggs, Juice'
+                  //       ),
+                  //       TaskCardWidget(),
+                  //       TaskCardWidget(),
+                  //       TaskCardWidget(),
+                  //       TaskCardWidget(),
+                  //       TaskCardWidget(),
+                  //       TaskCardWidget(),
+                  //     ],
+                  //   )
+                  // )
 
 
                 ],
