@@ -6,7 +6,6 @@ import 'package:flutter1v2/screens/homepage.dart';
 import 'package:flutter1v2/widgets.dart';
 
 class Taskpage extends StatefulWidget {
-  // const Taskpage({Key? key}) : super(key: key);
   Taskpage({required this.taskList, required this.notifyParent});
   final Function() notifyParent;
 
@@ -17,12 +16,12 @@ class Taskpage extends StatefulWidget {
 }
 
 class _TaskpageState extends State<Taskpage> {
-
+  TextEditingController nameController = TextEditingController();
+  TextEditingController descController = TextEditingController();
 
 
   @override
   Widget build(BuildContext context) {
-
 
 
     return Scaffold(
@@ -40,7 +39,6 @@ class _TaskpageState extends State<Taskpage> {
                 image: AssetImage('assets/images/logo_small.png'),
               ),
             ),
-
           ],
         ),
       ),
@@ -48,11 +46,9 @@ class _TaskpageState extends State<Taskpage> {
         child: Container(
           child: Stack(
             children: [
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
 
                   Container(
                     margin: const EdgeInsets.only(
@@ -69,10 +65,12 @@ class _TaskpageState extends State<Taskpage> {
                     ),
                   ),
 
+
                   TextField(
-                    onSubmitted: (value) async {
-                      //TODO object logic
-                    },
+                    controller: nameController,
+                    // onSubmitted: (value) async {
+                    //   //TODO object logic
+                    // },
                     decoration: const InputDecoration(
                       hintText: "Enter Task Title",
                       border: InputBorder.none,
@@ -85,8 +83,9 @@ class _TaskpageState extends State<Taskpage> {
                     ),
                   ),
 
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    controller: descController,
+                    decoration: const InputDecoration(
                       hintText: "Enter Description",
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(
@@ -94,16 +93,6 @@ class _TaskpageState extends State<Taskpage> {
                       )
                     ),
                   ),
-                  // TodoWidget(
-                  //   text: "Create your first Task",
-                  //   isDone: false,
-                  // ),
-                  // TodoWidget(
-                  //   isDone: false,
-                  // ),
-                  // TodoWidget(
-                  //   isDone: true,
-                  // ),
                 ],
               ),
               Positioned(
@@ -111,36 +100,19 @@ class _TaskpageState extends State<Taskpage> {
                 right: 20.0,
                 child: GestureDetector(
                   onTap: () {
-                    widget.taskList.add(Todo(name: "Elli ist eine Gœttin", description: "myDescriptoin"));
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => Homepage()
-                    //       // Navigator.pop(context);
-                    //   ),
-                    // );
+                    widget.taskList.add(Todo(name: nameController.value.text, description: descController.value.text));
                     widget.notifyParent();
                     Navigator.pop(context);
-
                   },
 
-                  // onTap: () {
-                  //   Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         // builder: (context) => Taskpage()
-                  //         Navigator.pop(context);
-                  //     ),
-                  //   );
-                  // },
                   child: Container(
-                    color: const Color(0xFF86829D),
-                    child: Text ("Save",
-                      style: const TextStyle(
-                        color: Color(0xFF121541),
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.bold,
-                      ),),
+                    child: SizedBox(
+                      width: 70,
+                      height: 70,
+                      child: Image(
+                        image: AssetImage('assets/images/saveImage.png'),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -150,7 +122,5 @@ class _TaskpageState extends State<Taskpage> {
       ),
     );
   }
-
-
 
 }

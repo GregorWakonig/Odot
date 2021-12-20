@@ -34,32 +34,20 @@ class _SettingspageState extends State<Settingspage> {
       ),
       body: SafeArea(
         child: Container(
-          child: Stack(
-            children: [
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Image(
-                          image: AssetImage(
-                              'assets/images/backIcon.png'
-                          )
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                        "Settings"
-                    ),
-                  ),
-                ],
+          margin: const EdgeInsets.symmetric(
+            vertical: 30.0,
+            horizontal: 30.0,
+          ),
+          child: Column(
+            children: const [
+              Text(
+                "Darkmode\n\nTextcolor\n\n",
+                style: TextStyle(
+                  color: Color(0xFF0e1315),
+                  fontSize: 28.0,
+                  // fontWeight: FontWeight.bold,
+                ),
               ),
-
-
             ],
           ),
         ),

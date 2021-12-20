@@ -23,10 +23,7 @@ class _HomepageState extends State<Homepage> {
   }
 
   var todoList = [
-    Todo(name: "Sample Task", description: "Mil, Eggs, Juice"),
-    Todo(name: "todo1", description: "myDescriptoin"),
-    Todo(name: "todo2", description: "myDescriptoin2"),
-    Todo(name: "todo3", description: "myDescriptoin3"),
+    Todo(name: "Sample Shopping List", description: "Milk, Eggs, Juice"),
   ];
 
 
@@ -67,68 +64,39 @@ class _HomepageState extends State<Homepage> {
 
           ),
           color: Color(0xFFf4fcff),
-          child: Stack(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
 
-                  Container(
-                    margin: const EdgeInsets.only(
-                      bottom: 20.0,
-                      top: 36.0,
-                    ),
-                    child: const Text(
-                      "Your Odot Lists",
-                      style: TextStyle(
-                        color: Color(0xFF0e1315),
-                        fontSize: 36.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-
-
-
-                  Expanded(
-                    child: ListView(
-                      children: [
-                        for (var task in todoList)
-                          TaskCardWidget(title: task.name, desc: task.description,)
-                      ],
-                    )
-                  )
-                ],
-              ),
-              Positioned(
-                bottom: 20.0,
-                right: 10.0,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {});
-                    // print(todoList);
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Taskpage(taskList: todoList, notifyParent: refresh)
-                      ),
-                    );
-                  },
-                  child: Container(
-                    child: const Image(
-                      image: AssetImage(
-                        "assets/images/addButton.png"
-                      ),
-                    ),
+              Container(
+                margin: const EdgeInsets.only(
+                  bottom: 20.0,
+                  top: 36.0,
+                ),
+                child: const Text(
+                  "Your Odot Lists",
+                  style: TextStyle(
+                    color: Color(0xFF0e1315),
+                    fontSize: 36.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 20.0,
-                left: 10.0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+
+              Expanded(child: SingleChildScrollView(
+                child: Column(children: [
+                  for (var task in todoList)
+                    TaskCardWidget(title: task.name, desc: task.description,)
+                ],)
+              ),
+              ),
+
+
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
                     children: [
                       InkWell(
                         onTap: () {
@@ -144,7 +112,7 @@ class _HomepageState extends State<Homepage> {
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10.0)),
                             color: Color(0xFF2150c6),
-                            ),
+                          ),
 
                           width: 200.0,
                           margin: const EdgeInsets.symmetric(
@@ -223,10 +191,41 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ),
+
+
+
                     ],
                   ),
-                ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {});
+                      // print(todoList);
 
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Taskpage(taskList: todoList, notifyParent: refresh)
+                        ),
+                      );
+                    },
+                    child: Container(
+
+
+
+
+                      child: SizedBox(
+                        width: 90,
+                        height: 90,
+                        child: const Image(
+                          image: AssetImage(
+                              "assets/images/addButton.png"
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

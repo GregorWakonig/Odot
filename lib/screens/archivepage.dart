@@ -13,10 +13,10 @@ class Archivepage extends StatefulWidget {
 class _ArchiveState extends State<Archivepage> {
 
   var TaskList = [
-    Todo(name: "First Archived Task", description: "Tidy up, send Letters"),
-    Todo(name: "This todo was bad anyways", description: "myDescriptoin"),
-    Todo(name: "Why did I even create this one", description: "myDescriptoin2"),
-    Todo(name: "archived 4", description: "myDescriptoin3"),
+    Todo(name: "Some old Task", description: "Tidy up, send Letters"),
+    Todo(name: "This was way back in 2019", description: "do things and other things"),
+    Todo(name: "Why did I even create this one", description: "I don't remember!"),
+    Todo(name: "Another deleted Task", description: "with things to do"),
   ];
 
 
